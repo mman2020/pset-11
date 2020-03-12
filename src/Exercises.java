@@ -27,6 +27,27 @@ public class Exercises {
   }
 
   public int findMeFaster(ArrayList<Integer> list, int target) {
+    if (list == null || list.size() == 0) {
+      return -1;
+    }
+
+    boolean isFound = false;
+    int start = 0;
+    int end = list.size();
+
+    while (!isFound) {
+      int midpoint = (start+end)/2;
+
+      if (list.get(midpoint) == target) {
+        return midpoint;
+      } else if (list.get(midpoint) < target) {
+        end = midpoint;
+      } else if (list.get(midpoint) > target) {
+        start = midpoint;
+      }
+
+    }
+
     return -1;
   }
 
