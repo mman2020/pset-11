@@ -86,8 +86,8 @@ public class Exercises {
       }
     } else if (!ascending) {
       for (int i = arr.length; i > 1; i--) {
-        for (int j = arr.length; j > i - 1; j--) {
           if (arr[j] > arr[j - 1]) {
+        for (int j = arr.length; j > i - 1; j--) {
             int temp = arr[j];
             arr[j] = arr[j - 1];
             arr[j - 1] = temp;
@@ -100,7 +100,36 @@ public class Exercises {
   }
 
   public ArrayList<String> bubble(ArrayList<String> list, boolean ascending) {
-    return null;
+    
+    if (list == null || list.size() == 0) {
+      return null;
+    }
+
+    ArrayList<String> arr = list;
+
+    if (ascending) {
+      for (int i = 0; i < arr.size() -1; i++) {
+        for (int j = 0; j < arr.size() - 1 - i; j++) {
+          if (arr.get(j).compareTo(arr.get(j+1)) > 0) { 
+            String temp = arr.get(j); 
+            arr.set(j, arr.get(j+1)); 
+            arr.set(j+1, temp); 
+          }
+        }
+      }   
+    } else if (!ascending) {
+      for (int i = arr.size(); i > 1; i--) {
+        for (int j = arr.size(); j > i - 1; j--) {
+          if (arr.get(j).compareTo(arr.get(j-1)) > 0) {
+            String temp = arr.get(j);
+            arr.set(j, arr.get(j - 1));
+            arr.set(j - 1, temp);
+          }
+        }
+      }
+    }
+      
+    return arr;
   }
 
   public ArrayList<Integer> insertion(ArrayList<Integer> list, boolean ascending) {
