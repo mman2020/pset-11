@@ -240,8 +240,43 @@ public class Exercises {
   }
 
   public int[] selection(int[] list, boolean ascending) {
+    if (list == null || list.length == 0) {
+      return null;
+    }
+
+    int[] arr = list;
+
+    if (ascending) {
+      for (int i = 0; i < arr.length; i++) {
+        int marker = i;
+        int min = i;
+        for (int j = i + 1; j < arr.length; j++) {
+          if (arr[j] < arr[min]) {
+            min = j;
+          }
+        }
+        temp = arr[min];
+        arr[min] = arr[i];
+        arr[i] = temp;
+      }
+    } else if (!ascending) {
+      for (int i = 0; i < arr.length; i++) {
+        int marker = i;
+        int max = i;
+        for (int j = i + 1; j < arr.length; j++) {
+          if (arr[j] > arr[max]) {
+            max = j;
+          }
+        }
+        temp = arr[max];
+        arr[max] = arr[i];
+        arr[i] = temp;
+      }
+    }
+
     return null;
   }
+
 
   public ArrayList<String> selection(ArrayList<String> list, boolean ascending) {
     return null;
