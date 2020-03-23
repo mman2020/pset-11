@@ -19,12 +19,16 @@ public class Exercises {
     if (list == null || target.equals(null)) {
      return -1;
     }
+	
    for (int i = 0; i < list.size(); i++) {
+	   
     if (list.get(i).equals(target)) {
        return i;
      }
+	 
    }
    return -1;
+   
   }
 
   public int findMeFaster(ArrayList<Integer> list, int target) {
@@ -283,8 +287,10 @@ public class Exercises {
 
          merge(left, true);
          merge(right, true);
+		 
          int a = 0;
          int b = 0;
+		 
          for (int i = 0; i < list.length; i++) {
              if (b >= right.length || (a < left.length && left[a].compareToIgnoreCase(right[b]) < 0)) {
                  list[i] = left[a];
@@ -295,6 +301,8 @@ public class Exercises {
              }
          }
      }
+	 
      return list;
+	 
   }
 }
