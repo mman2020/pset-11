@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Exercises {
 
   public int findMe(int[] list, int target) {
+
     if (list == null) {
       return -1;
     }
@@ -14,6 +15,7 @@ public class Exercises {
   }
 
   public int findMe(ArrayList<String> list, String target) {
+	  
     if (list == null || target.equals(null)) {
      return -1;
     }
@@ -26,6 +28,7 @@ public class Exercises {
   }
 
   public int findMeFaster(ArrayList<Integer> list, int target) {
+	  
     if (list == null) {
      return -1;
    }
@@ -47,6 +50,7 @@ public class Exercises {
   }
 
   public int findMeFaster(String[] list, String target) {
+	  
     if (list == null || list.length == 0 || target.equals(null)) {
      return -1;
    }
@@ -70,6 +74,7 @@ public class Exercises {
   }
 
   public int[] bubble(int[] list, boolean ascending) {
+	  
     if (list == null || list.length == 0) {
           return null;
       }
@@ -89,6 +94,7 @@ public class Exercises {
   }
 
   public ArrayList<String> bubble(ArrayList<String> list, boolean ascending) {
+	  
     if (list == null || list.size() == 0) {
           return null;
       }
@@ -108,6 +114,7 @@ public class Exercises {
   }
 
   public ArrayList<Integer> insertion(ArrayList<Integer> list, boolean ascending) {
+	  
 	  if (list == null || list.size() == 0) {
           return null;
       }
@@ -132,6 +139,7 @@ public class Exercises {
   }
 
   public String[] insertion(String[] list, boolean ascending) {
+	  
     if (list == null || list.length == 0) {
           return null;
       }
@@ -154,6 +162,7 @@ public class Exercises {
   }
 
   public int[] selection(int[] list, boolean ascending) {
+	  
 	  if (list == null || list.length == 0) {
           return null;
       }
@@ -176,6 +185,7 @@ public class Exercises {
 
 
   public ArrayList<String> selection(ArrayList<String> list, boolean ascending) {
+	  
 	  if (list == null || list.size() == 0) {
           return null;
       }
@@ -200,6 +210,7 @@ public class Exercises {
   }
 
   public ArrayList<Integer> merge(ArrayList<Integer> list, boolean ascending) {
+	  
 	  if (list == null || list.size() == 0) {
           return null;
       }
@@ -254,6 +265,7 @@ public class Exercises {
   }
 
   public String[] merge(String[] list, boolean ascending) {
+	  
 	  if (list == null || list.length == 0) {
           return null;
       }
