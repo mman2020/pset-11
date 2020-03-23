@@ -3,278 +3,175 @@ import java.util.ArrayList;
 public class Exercises {
 
   public int findMe(int[] list, int target) {
-    if (list == null || list.length == 0) {
+    if (list == null) {
       return -1;
     }
     for (int i = 0; i < list.length; i++) {
-      if (list[i] == target) {
-        return i;
+          if (list[i] == target)
+              return i;
       }
-    }
     return -1;
   }
 
   public int findMe(ArrayList<String> list, String target) {
-    if (list == null || list.size() == 0 || target == null) {
-      return -1;
+    if (list == null || target.equals(null)) {
+     return -1;
     }
-    for (int i = 0; i < list.size(); i++) {
-      if (list.get(i) == target) {
-        return i;
-      }
-    }
-    return -1;
+   for (int i = 0; i < list.size(); i++) {
+    if (list.get(i).equals(target)) {
+       return i;
+     }
+   }
+   return -1;
   }
 
   public int findMeFaster(ArrayList<Integer> list, int target) {
-    if (list == null || list.size() == 0) {
-      return -1;
-    }
-    boolean isFound = false;
-    int start = 0;
-    int end = list.size();
-    while (!isFound) {
-      int midpoint = (start+end)/2;
-      if (list.get(midpoint) == target) {
-        return midpoint;
-      } else if (list.get(midpoint) < target) {
-        end = midpoint;
-      } else if (list.get(midpoint) > target) {
-        start = midpoint;
-      }
-    }
-    return -1;
+    if (list == null) {
+     return -1;
+   }
+   int start = 0;
+   int middle = 0;
+   int end = list.size() - 1;
+
+   while (start <= end) {
+     middle = (start + end) / 2;
+     if (list.get(middle) < target) {
+       start = middle + 1;
+     }else if (list.get(middle) > target) {
+       end = middle - 1;
+     }else if (list.get(middle) == target) {
+       return middle;
+     }
+   }
+   return -1;
   }
 
   public int findMeFaster(String[] list, String target) {
-    if (list == null || list.length == 0 || target == null) {
-      return -1;
-    }
-    boolean isFound = false;
-    int start = 0;
-    int end = list.length;
-    while (!isFound) {
-      int midpoint = (start + end) / 2;
-      if (list[midpoint].equals(target)) {
-        return midpoint;
-      } else if (list[midpoint].compareTo(target) < 0) {
-        end = midpoint;
-      } else if (list[midpoint].compareTo(target) > 0) {
-        start = midpoint;
-      }
-    }
+    if (list == null || list.length == 0 || target.equals(null)) {
+     return -1;
+   }
+
+   int start = 0;
+   int end = list.length;
+
+   while (start < end) {
+     int middle = (start + end) / 2;
+
+     if (list[middle].compareTo(target) < 0) {
+         start = middle + 1;
+       }else if (list[middle].compareTo(target) > 0) {
+         end = middle - 1;
+       }else if (list[middle].compareTo(target) == 0) {
+         return middle;
+       }
+
+   }
     return -1;
   }
 
   public int[] bubble(int[] list, boolean ascending) {
-    
     if (list == null || list.length == 0) {
-      return null;
-    }
-
-    int[] arr = list;
-
-    if (ascending) {
-      for (int i = 0; i < arr.length -1; i++) {
-        for (int j = 0; j < arr.length -1 -i; j++) {
-          if (arr[j] > arr[j+1]) { 
-            int temp = arr[j]; 
-            arr[j] = arr[j+1]; 
-            arr[j+1] = temp; 
-          } 
-        }
+          return null;
       }
-    } else if (!ascending) {
-      for (int i = arr.length; i > 1; i--) {
-          if (arr[j] > arr[j - 1]) {
-        for (int j = arr.length; j > i - 1; j--) {
-            int temp = arr[j];
-            arr[j] = arr[j - 1];
-            arr[j - 1] = temp;
+
+      if (ascending) {
+          for (int i = 0; i < list.length -1; i++) {
+              for (int j = 0; j < list.length -1 -i; j++) {
+                  if (list[j] > list[j + 1]) {
+                      int temp = list[j];
+                      list[j] = list[j + 1];
+                      list[j+1] = temp;
+                  }
+              }
           }
-        }
       }
-    }
-    
-    return arr;
+      return list;
   }
 
   public ArrayList<String> bubble(ArrayList<String> list, boolean ascending) {
-    
     if (list == null || list.size() == 0) {
-      return null;
-    }
-
-    ArrayList<String> arr = list;
-
-    if (ascending) {
-      for (int i = 0; i < arr.size() -1; i++) {
-        for (int j = 0; j < arr.size() - 1 - i; j++) {
-          if (arr.get(j).compareTo(arr.get(j+1)) > 0) { 
-            String temp = arr.get(j); 
-            arr.set(j, arr.get(j+1)); 
-            arr.set(j+1, temp); 
-          }
-        }
-      }   
-    } else if (!ascending) {
-      for (int i = arr.size(); i > 1; i--) {
-        for (int j = arr.size(); j > i - 1; j--) {
-          if (arr.get(j).compareTo(arr.get(j-1)) > 0) {
-            String temp = arr.get(j);
-            arr.set(j, arr.get(j - 1));
-            arr.set(j - 1, temp);
-          }
-        }
+          return null;
       }
-    }
-      
-    return arr;
+
+      if (ascending) {
+          for (int i = 0; i < list.size() -1; i++) {
+              for (int j = 0; j < list.size()-1-i; j++) {
+                  if (list.get(j).compareTo(list.get(j+1)) > 0) {
+                      String temp = list.get(j);
+                      list.set(j, list.get(j+1));
+                      list.set(j+1, temp);
+                  }
+              }
+          }
+      }
+      return list;
   }
 
   public ArrayList<Integer> insertion(ArrayList<Integer> list, boolean ascending) {
-    
-    if (list == null || list.size() == 0) {
-      return null;
-    }
-
-    ArrayList<Integer> arr = list;
-
-    if (ascending) {
-      for (int i = 1; i < arr.size(); i++) {
-        boolean isSorted = false;
-
-        while (!isSorted) {
-          for (int j = i; j >= 0; j--) {
-            if (arr.get(i) < arr.get(j)) {
-              int saved = arr.get(i);
-              for (int k = i-1; k > j; k--) {
-                int temp = arr.get(k);
-                arr.set(k, arr.get(k-1));
-                arr.set(k+1, temp);
-              }
-              arr.set(j, saved);
-              isSorted = true;
-              break;
-            }
-          }
-        }
+	  if (list == null || list.size() == 0) {
+          return null;
       }
-    } else if (!ascending) {
-      for (int i = 1; i < arr.size(); i++) {
-        boolean isSorted = false;
 
-        while (!isSorted) {
-          for (int j = i; j >= 0; j--) {
-            if (arr.get(i) > arr.get(j)) {
-              int saved = arr.get(i);
-              for (int k = i - 1; k > j; k--) {
-                int temp = arr.get(k);
-                arr.set(k, arr.get(k - 1));
-                arr.set(k + 1, temp);
+      if (ascending) {
+          for (int i = 1; i < list.size(); i++) {
+              int key = list.get(i);
+              for (int j = i - 1; j >= 0; j--) {
+                  if (key < list.get(j)) {
+                      list.set(j + 1,list.get(j));
+                      if (j == 0) {
+                          list.set(0, key);
+                      }
+                  } else {
+                      list.set(j + 1, key);
+                      break;
+                  }
               }
-              arr.set(j, saved);
-            }
-            isSorted = true;
-            break;
           }
-        }
       }
-    }
-  }
-    
-    return null;
+      return list;
   }
 
   public String[] insertion(String[] list, boolean ascending) {
-    
     if (list == null || list.length == 0) {
-      return null;
-    }
+          return null;
+      }
 
-    String[] arr = list;
-
+    String temp;
     if (ascending) {
-      for (int i = 1; i < arr.length; i++) {
-        boolean isSorted = false;
-
-        while (!isSorted) {
-          for (int j = i; j >= 0; j--) {
-            if (arr[i].compareTo(arr[j]) < 0) {
-              int saved = arr[i];
-              for (int k = i - 1; k > j; k--) {
-                int temp = arr[k];
-                arr[k] = arr[k-1];
-                arr[k+1] = temp;
-              }
-              arr[j] = saved;
-              isSorted = true;
-              break;
-            }
-          }
+        for (int i = 1; i < list.length; i++) {
+            temp = list[i];
+            int j = 0;
+            for (j = i; j > 0; j--)
+                if (temp.compareTo(list[j - 1]) < 0) {
+                    list[j] = list[j - 1];
+                } else {
+                    break;
+                }
+             list[j] = temp;
         }
-      }
-    } else if (!ascending) {
-      for (int i = 1; i < arr.length; i++) {
-        boolean isSorted = false;
-
-        while (!isSorted) {
-          for (int j = i; j >= 0; j--) {
-            if (arr[i].compareTo(arr[j]) > 0) {
-              int saved = arr[i];
-              for (int k = i - 1; k > j; k--) {
-                int temp = arr[k];
-                arr[k] = arr[k-1];
-                arr[k+1] = temp;
-              }
-              arr[j] = saved;
-            }
-            isSorted = true;
-            break;
-          }
-        }
-      }
     }
-    
-    return arr;
+   	return list;
   }
 
   public int[] selection(int[] list, boolean ascending) {
-    if (list == null || list.length == 0) {
-      return null;
-    }
-
-    int[] arr = list;
-
-    if (ascending) {
-      for (int i = 0; i < arr.length; i++) {
-        int marker = i;
-        int min = i;
-        for (int j = i + 1; j < arr.length; j++) {
-          if (arr[j] < arr[min]) {
-            min = j;
-          }
-        }
-        temp = arr[min];
-        arr[min] = arr[i];
-        arr[i] = temp;
+	  if (list == null || list.length == 0) {
+          return null;
       }
-    } else if (!ascending) {
-      for (int i = 0; i < arr.length; i++) {
-        int marker = i;
-        int max = i;
-        for (int j = i + 1; j < arr.length; j++) {
-          if (arr[j] > arr[max]) {
-            max = j;
-          }
-        }
-        temp = arr[max];
-        arr[max] = arr[i];
-        arr[i] = temp;
-      }
-    }
 
-    return null;
+      if (ascending) {
+          for (int i = 0; i < list.length - 1; i++) {
+              int index = i;
+              for (int j = i + 1; j < list.length; j++) {
+                  if (list[j] < list[index]) {
+                      index = j;
+                  }
+              }
+              int smallerNumber = list[index];
+              list[index] = list[i];
+              list[i] = smallerNumber;
+          }
+      }
+      return list;
   }
 
 
