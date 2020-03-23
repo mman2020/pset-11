@@ -239,10 +239,12 @@ public class Exercises {
 
           left = merge(left, true);
           right = merge(right, true);
+		  
           int leftIndex = 0;
           int rightIndex = 0;
           int completeArrayIndex = 0;
-          while (leftIndex < left.size() && rightIndex < right.size()) {
+          
+		  while (leftIndex < left.size() && rightIndex < right.size()) {
               if ((left.get(leftIndex).compareTo(right.get(rightIndex))) < 0) {
                   list.set(completeArrayIndex, left.get(leftIndex));
                   leftIndex++;
@@ -252,6 +254,7 @@ public class Exercises {
               }
               completeArrayIndex++;
           }
+		  
           ArrayList < Integer > rest;
           int restIndex;
           if (leftIndex >= left.size()) {
